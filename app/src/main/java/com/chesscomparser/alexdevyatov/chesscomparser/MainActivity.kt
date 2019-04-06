@@ -2,9 +2,11 @@ package com.chesscomparser.alexdevyatov.chesscomparser
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
 import com.activeandroid.ActiveAndroid
+import com.chesscomparser.alexdevyatov.chesscomparser.adapters.CountriesListAdapter
 import com.chesscomparser.alexdevyatov.chesscomparser.dao.CountryDao
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val list = CountryDao.loadAllCountries()
-        tv_hello_world.text = list.size.toString()
+        rv_countries_list.layoutManager = LinearLayoutManager(this)
+        rv_countries_list.adapter = CountriesListAdapter(list)
     }
 }
