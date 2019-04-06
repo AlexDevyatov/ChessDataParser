@@ -5,6 +5,6 @@ import com.chesscomparser.alexdevyatov.chesscomparser.model.Country
 
 object CountryDao {
     fun loadAllCountries() : List<Country> {
-        return Select().from(Country::class.java).execute()
+        return Select().from(Country::class.java).orderBy("name").execute()
     }
 }
