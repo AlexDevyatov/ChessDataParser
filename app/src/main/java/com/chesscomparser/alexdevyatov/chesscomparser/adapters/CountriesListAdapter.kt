@@ -9,9 +9,13 @@ import android.widget.TextView
 import com.chesscomparser.alexdevyatov.chesscomparser.R
 
 
-class CountriesListAdapter(val values: List<Country>) :
+class CountriesListAdapter(val values: List<Country>, val listener: OnItemClickListener) :
         RecyclerView.Adapter<CountriesListAdapter.ViewHolder>() {
 
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Country)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -22,7 +26,7 @@ class CountriesListAdapter(val values: List<Country>) :
     override fun getItemCount(): Int = values.size
 
     override fun onBindViewHolder(holder : ViewHolder, position : Int) {
-        holder.textView?.text = values[position].name
+        holder.bind(values[position], listener)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,6 +34,14 @@ class CountriesListAdapter(val values: List<Country>) :
         init {
             textView = itemView.findViewById(R.id.tv_country_name)
         }
+
+        fun bind(country: Country, listener: OnItemClickListener) {
+            textView?.text = country.name
+            itemView.setOnClickListener {
+                listener.onItemClick(country)
+            }
+        }
+
     }
 
 }
