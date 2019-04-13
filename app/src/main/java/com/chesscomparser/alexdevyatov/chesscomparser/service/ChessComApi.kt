@@ -1,9 +1,8 @@
 package com.chesscomparser.alexdevyatov.chesscomparser.service
 
-import com.chesscomparser.alexdevyatov.chesscomparser.model.PlayersRequestResult
+import com.chesscomparser.alexdevyatov.chesscomparser.response.PlayersRequestResult
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path

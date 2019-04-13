@@ -27,10 +27,11 @@ class MainActivity : AppCompatActivity(){
         val layoutManager = LinearLayoutManager(this)
         recyclerView?.let {
             it.layoutManager = layoutManager
+            val context = this
             it.adapter = CountriesListAdapter(list, object :  CountriesListAdapter.OnItemClickListener {
                 override fun onItemClick(country: Country) {
                     RepositoryProvider.providePlayersRepository().getPlayers(country.code!!)
-                            .enqueue(PlayersListener())
+                            .enqueue(PlayersListener(context, country.code!!))
                 }
             })
             it.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
