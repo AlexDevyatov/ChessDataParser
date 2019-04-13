@@ -4,7 +4,7 @@ import com.chesscomparser.alexdevyatov.chesscomparser.service.ChessComApi
 
 object RepositoryProvider {
 
-    fun providePlayersRepository(): PlayersRepository {
-        return PlayersRepository(ChessComApi.create())
+    fun providePlayersRepository(): SiteRepository {
+        return SiteRepository(ChessComApi.create())
     }
 }

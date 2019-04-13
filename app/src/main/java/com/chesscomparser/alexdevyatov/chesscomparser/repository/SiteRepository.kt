@@ -5,7 +5,7 @@ import com.chesscomparser.alexdevyatov.chesscomparser.service.ChessComApi
 import retrofit2.Call
 import java.util.*
 
-class PlayersRepository(val apiService: ChessComApi) {
+class SiteRepository(val apiService: ChessComApi) {
     fun getPlayers(countryCode : String) : Call<PlayersRequestResult> {
         return apiService.getPlayers(countryCode)
     }
