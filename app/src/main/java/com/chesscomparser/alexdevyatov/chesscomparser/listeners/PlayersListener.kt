@@ -3,6 +3,7 @@ package com.chesscomparser.alexdevyatov.chesscomparser.listeners
 import android.content.Context
 import android.widget.Toast
 import com.activeandroid.ActiveAndroid
+import com.chesscomparser.alexdevyatov.chesscomparser.activities.PlayersActivity
 import com.chesscomparser.alexdevyatov.chesscomparser.model.Player
 import com.chesscomparser.alexdevyatov.chesscomparser.response.PlayersRequestResult
 import retrofit2.Call
@@ -18,12 +19,17 @@ class PlayersListener(val context: Context, val countryCode: String) : Callback<
     override fun onResponse(call: Call<PlayersRequestResult>, response: Response<PlayersRequestResult>) {
         val players = response.body()!!.players
         ActiveAndroid.beginTransaction()
+        //var count : Int = 0
         try {
             for (name in players) {
                 val player = Player()
                 player.countryCode = countryCode
                 player.nickname = name
                 player.save()
+                /*count++
+                if (count == 10) {
+                    break;
+                }*/
             }
             ActiveAndroid.setTransactionSuccessful()
             val toast: Toast = Toast.makeText(context, countryCode + ": saved", Toast.LENGTH_SHORT)
@@ -31,5 +37,7 @@ class PlayersListener(val context: Context, val countryCode: String) : Callback<
         } finally {
             ActiveAndroid.endTransaction()
         }
+        val intent = PlayersActivity.newIntent(context, countryCode)
+        context.startActivity(intent)
     }
 }

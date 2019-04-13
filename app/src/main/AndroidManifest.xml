@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chesscomparser.alexdevyatov.chesscomparser">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
@@ -18,16 +20,16 @@
             android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.chesscomparser.alexdevyatov.chesscomparser.model.Country,
-                com.chesscomparser.alexdevyatov.chesscomparser.model.Player" />
+            android:value="com.chesscomparser.alexdevyatov.chesscomparser.model.Country,                 com.chesscomparser.alexdevyatov.chesscomparser.model.Player" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.PlayersActivity"></activity>
     </application>
 
 </manifest>
