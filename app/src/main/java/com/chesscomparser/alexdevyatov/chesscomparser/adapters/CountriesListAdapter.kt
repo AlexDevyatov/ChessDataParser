@@ -1,5 +1,6 @@
 package com.chesscomparser.alexdevyatov.chesscomparser.adapters
 
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +8,19 @@ import com.chesscomparser.alexdevyatov.chesscomparser.model.Country
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.chesscomparser.alexdevyatov.chesscomparser.R
+import android.support.v4.view.ViewCompat.setRotationY
+import android.support.v4.view.ViewCompat.setRotationX
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.view.animation.LinearInterpolator
+import android.support.v4.view.ViewCompat.animate
+import android.R.attr.rotationX
+import android.R.attr.rotationY
+import android.content.Context
+import android.view.animation.AnimationUtils
 
 
-class CountriesListAdapter(val values: List<Country>, val listener: OnItemClickListener) :
+class CountriesListAdapter(val context: Context, val values: List<Country>, val listener: OnItemClickListener) :
         RecyclerView.Adapter<CountriesListAdapter.ViewHolder>() {
 
 
@@ -20,7 +31,7 @@ class CountriesListAdapter(val values: List<Country>, val listener: OnItemClickL
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_country, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(context, itemView)
     }
 
     override fun getItemCount(): Int = values.size
@@ -29,7 +40,7 @@ class CountriesListAdapter(val values: List<Country>, val listener: OnItemClickL
         holder.bind(values[position], listener)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView? = null
         init {
             textView = itemView.findViewById(R.id.tv_country_name)
@@ -39,6 +50,18 @@ class CountriesListAdapter(val values: List<Country>, val listener: OnItemClickL
             textView?.text = country.name
             itemView.setOnClickListener {
                 listener.onItemClick(country)
+                val mEnlargeAnimation = AnimationUtils.loadAnimation(context, R.anim.enlarge)
+
+                itemView.startAnimation(mEnlargeAnimation)
+                /*itemView.animate()
+                        .setDuration(1000)
+                        .setInterpolator(LinearInterpolator())
+                        /*.setListener(object : AnimatorListenerAdapter() {
+                            override fun onAnimationEnd(animator: Animator) {
+                                itemView.setRotationX(0F)
+                                itemView.setRotationY(0F)
+                            }
+                        })*/*/
             }
         }
 

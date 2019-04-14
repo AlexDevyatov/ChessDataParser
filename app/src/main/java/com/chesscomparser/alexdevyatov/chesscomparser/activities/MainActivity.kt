@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         rvCountries?.let {
             it.layoutManager = layoutManager
             val context = this
-            it.adapter = CountriesListAdapter(list, object : CountriesListAdapter.OnItemClickListener {
+            it.adapter = CountriesListAdapter(context, list, object : CountriesListAdapter.OnItemClickListener {
                 override fun onItemClick(country: Country) {
                     if (hasInternetConnection()) {
                         progressBar!!.visibility = View.VISIBLE
