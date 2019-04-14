@@ -1,5 +1,8 @@
 package com.chesscomparser.alexdevyatov.chesscomparser.activities
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
@@ -35,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             val context = this
             it.adapter = CountriesListAdapter(list, object : CountriesListAdapter.OnItemClickListener {
                 override fun onItemClick(country: Country) {
-                    if (Dao.getPlayersCountByCountry(country.code) == 0) {
+                    if (hasInternetConnection()) {
                         progressBar!!.visibility = View.VISIBLE
                         RepositoryProvider.providePlayersRepository().getPlayers(country.code!!)
                                 .enqueue(PlayersListener(context, country.code!!))
@@ -47,5 +50,11 @@ class MainActivity : AppCompatActivity() {
             })
             it.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         }
+    }
+
+    fun hasInternetConnection(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        return activeNetwork != null
     }
 }
