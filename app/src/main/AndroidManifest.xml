@@ -31,6 +31,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PlayersActivity"></activity>
+
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="com.chesscomparser.alexdevyatov.chesscomparser"
+            android:enabled="true"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>
