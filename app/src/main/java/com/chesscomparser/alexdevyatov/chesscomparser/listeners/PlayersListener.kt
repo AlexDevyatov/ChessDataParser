@@ -19,7 +19,10 @@ class PlayersListener(val context: Context, val countryCode: String) : Callback<
     }
 
     override fun onResponse(call: Call<PlayersRequestResult>, response: Response<PlayersRequestResult>) {
-        val players = response.body()!!.players
+        var players = listOf<String>()
+        if (response.body() != null) {
+            players = response.body()!!.players
+        }
         ActiveAndroid.beginTransaction()
         try {
             for (name in players) {
