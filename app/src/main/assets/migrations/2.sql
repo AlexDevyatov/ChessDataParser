@@ -1,0 +1,3 @@
+ALTER TABLE players ADD COLUMN full_name TEXT;
+ALTER TABLE players ADD COLUMN avatar TEXT;
+ALTER TABLE players ADD COLUMN location TEXT;

@@ -18,7 +18,7 @@
             android:value="countries" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="AA_MODELS"
             android:value="com.chesscomparser.alexdevyatov.chesscomparser.model.Country,                 com.chesscomparser.alexdevyatov.chesscomparser.model.Player" />
@@ -30,14 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PlayersActivity"></activity>
+        <activity android:name=".activities.PlayersActivity" />
 
         <provider
             android:name="com.activeandroid.content.ContentProvider"
             android:authorities="com.chesscomparser.alexdevyatov.chesscomparser"
             android:enabled="true"
-            android:exported="false">
-        </provider>
+            android:exported="false"></provider>
+
+        <activity android:name=".activities.PlayerActivity"></activity>
     </application>
 
 </manifest>

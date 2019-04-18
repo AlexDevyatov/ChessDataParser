@@ -13,5 +13,13 @@ class Player : Model {
     @Column(name = "nickname")
     var nickname: String? = null
 
+    @Column(name = "full_name")
+    var name: String? = null
+    @Column(name = "avatar")
+    var avatarUrl: String? = null
+    @Column(name = "location")
+    var location: String? = null
+
+
     constructor()
 }

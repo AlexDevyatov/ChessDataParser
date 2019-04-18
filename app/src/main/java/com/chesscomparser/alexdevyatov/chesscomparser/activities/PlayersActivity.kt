@@ -11,7 +11,9 @@ import android.widget.Toast
 import com.chesscomparser.alexdevyatov.chesscomparser.R
 import com.chesscomparser.alexdevyatov.chesscomparser.adapters.PlayersListAdapter
 import com.chesscomparser.alexdevyatov.chesscomparser.dao.Dao
+import com.chesscomparser.alexdevyatov.chesscomparser.listeners.ProfileListener
 import com.chesscomparser.alexdevyatov.chesscomparser.model.Player
+import com.chesscomparser.alexdevyatov.chesscomparser.repository.RepositoryProvider
 
 class PlayersActivity : AppCompatActivity() {
 
@@ -46,6 +48,8 @@ class PlayersActivity : AppCompatActivity() {
             it.adapter = PlayersListAdapter(players, object : PlayersListAdapter.OnItemClickListener {
                 override fun onItemClick(item: Player) {
                     Toast.makeText(context, item.nickname, Toast.LENGTH_SHORT).show()
+                    RepositoryProvider.providePlayersRepository().getPlayerProfile(item.nickname!!)
+                            .enqueue(ProfileListener(item.nickname!!))
                 }
             })
             it.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))

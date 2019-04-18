@@ -30,7 +30,7 @@ class PlayersListAdapter(val values: List<Player>, val listener: OnItemClickList
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView? = null
         init {
-            textView = itemView.findViewById(R.id.tv_player_name)
+            textView = itemView.findViewById(R.id.tv_player_nickname)
         }
 
         fun bind(player: Player, listener: OnItemClickListener) {
