@@ -50,18 +50,6 @@ class CountriesListAdapter(val context: Context, val values: List<Country>, val 
             textView?.text = country.name
             itemView.setOnClickListener {
                 listener.onItemClick(country)
-                val mEnlargeAnimation = AnimationUtils.loadAnimation(context, R.anim.enlarge)
-
-                itemView.startAnimation(mEnlargeAnimation)
-                /*itemView.animate()
-                        .setDuration(1000)
-                        .setInterpolator(LinearInterpolator())
-                        /*.setListener(object : AnimatorListenerAdapter() {
-                            override fun onAnimationEnd(animator: Animator) {
-                                itemView.setRotationX(0F)
-                                itemView.setRotationY(0F)
-                            }
-                        })*/*/
             }
         }
 

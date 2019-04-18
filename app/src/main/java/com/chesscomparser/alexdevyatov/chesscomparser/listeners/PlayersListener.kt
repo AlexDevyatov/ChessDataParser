@@ -32,8 +32,6 @@ class PlayersListener(val context: Context, val countryCode: String) : Callback<
                 player.save()
             }
             ActiveAndroid.setTransactionSuccessful()
-            val toast: Toast = Toast.makeText(context, countryCode + ": saved", Toast.LENGTH_SHORT)
-            toast.show()
         } finally {
             ActiveAndroid.endTransaction()
         }
