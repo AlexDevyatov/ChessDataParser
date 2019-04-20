@@ -16,6 +16,7 @@ import com.chesscomparser.alexdevyatov.chesscomparser.dao.Dao
 import com.chesscomparser.alexdevyatov.chesscomparser.model.Country
 import com.chesscomparser.alexdevyatov.chesscomparser.listeners.PlayersListener
 import com.chesscomparser.alexdevyatov.chesscomparser.repository.RepositoryProvider
+import com.facebook.drawee.backends.pipeline.Fresco
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Fresco.initialize(applicationContext)
         initRecyclerView()
         progressBar = findViewById(R.id.pb_main)
     }

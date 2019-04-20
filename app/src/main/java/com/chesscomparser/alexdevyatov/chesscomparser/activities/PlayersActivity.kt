@@ -49,7 +49,7 @@ class PlayersActivity : AppCompatActivity() {
                 override fun onItemClick(item: Player) {
                     Toast.makeText(context, item.nickname, Toast.LENGTH_SHORT).show()
                     RepositoryProvider.providePlayersRepository().getPlayerProfile(item.nickname!!)
-                            .enqueue(ProfileListener(item.nickname!!))
+                            .enqueue(ProfileListener(context, item.nickname!!))
                 }
             })
             it.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
