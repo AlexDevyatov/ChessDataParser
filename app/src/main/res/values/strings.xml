@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ChessComParser</string>
+    <string name="download_pgn">Download PGN</string>
 </resources>
